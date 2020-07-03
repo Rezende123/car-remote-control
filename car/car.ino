@@ -1,4 +1,4 @@
- // ############# LIBRARIES ############### //
+// ############# LIBRARIES ############### //
 
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
@@ -34,26 +34,6 @@ void loop() {
 
   Serial.println("##[RESULT]## ==> " + response);
   
-}
-
-// ############# HTTP REQUEST ################ //
-
-String getCommand()
-{
-  http.begin(BASE_URL);
-  http.addHeader("content-type", "application/x-www-form-urlencoded");
-  
-  String response = "";
-  int httpCode = http.GET();                                                               //Send the request
-   
-  if (httpCode > 0) { //Check the returning code
-   
-    response = http.getString();   //Get the request response payload
-    
-  }          
-          
-  http.end();
-  return response;
 }
 
 // implementacao dos prototypes
