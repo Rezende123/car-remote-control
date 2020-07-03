@@ -1,6 +1,8 @@
 void initSerial() {
   Serial.begin(115200);
   while (!Serial);
+  
+  servoDirection.attach(SERVO_PORT);
 }
 
 void initWiFi() {

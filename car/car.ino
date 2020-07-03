@@ -1,20 +1,24 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <Arduino_JSON.h>
+#include <Servo.h>
 
 const char* SSID = "eu"; // rede wifi
 const char* PASSWORD = "eueueueu"; // senha da rede wifi
-
 String BASE_URL = "http://192.168.43.235:8080/command";
 
-JSONVar command; // Fields: ['velocity', 'direction']
+const int SERVO_PORT = 10;
 
 void initSerial();
 void initWiFi();
 String getCommand();
+void setDirection(int direction);
 
 WiFiClient client;
 HTTPClient http;
+
+JSONVar command; // Fields: ['velocity', 'direction']
+Servo servoDirection; 
 
 void setup() {
   initSerial();
@@ -36,5 +40,7 @@ void loop() {
      Serial.print(", direction: ");
      Serial.print((int) command["direction"]);
      Serial.println(" }");
+
+     setDirection( command["direction"] );
   }
 }
