@@ -7,12 +7,15 @@ const char* SSID = "eu"; // rede wifi
 const char* PASSWORD = "eueueueu"; // senha da rede wifi
 String BASE_URL = "http://192.168.43.235:8080/command";
 
-const int SERVO_PORT = 10;
+const int SERVO_PORT = 11;
+const int MOTOR_FORWARD_PORT = 10;
+const int MOTOR_BACKWARD_PORT = 9; 
 
 void initSerial();
 void initWiFi();
 String getCommand();
 void setDirection(int direction);
+void setVelocity(int velocity);
 
 WiFiClient client;
 HTTPClient http;
@@ -42,5 +45,6 @@ void loop() {
      Serial.println(" }");
 
      setDirection( command["direction"] );
+     setVelocity( command["velocity"] );
   }
 }
