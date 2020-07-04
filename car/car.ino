@@ -3,13 +3,13 @@
 #include <Arduino_JSON.h>
 #include <Servo.h>
 
+#define SERVO_PORT 11
+#define MOTOR_FORWARD_PORT 10
+#define MOTOR_BACKWARD_PORT 9
+
 const char* SSID = "eu"; // rede wifi
 const char* PASSWORD = "eueueueu"; // senha da rede wifi
 String BASE_URL = "http://192.168.43.235:8080/command";
-
-const int SERVO_PORT = 11;
-const int MOTOR_FORWARD_PORT = 10;
-const int MOTOR_BACKWARD_PORT = 9; 
 
 void initSerial();
 void initWiFi();
