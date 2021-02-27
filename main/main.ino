@@ -1,36 +1,23 @@
-#include <ESP8266WiFi.h>
-#include <ESP8266HTTPClient.h>
 #include <Arduino_JSON.h>
 #include <Servo.h>
 
-#define SERVO_PORT 11
 #define MOTOR_FORWARD_PORT 10
 #define MOTOR_BACKWARD_PORT 9
 
-const char* SSID = "eu"; // rede wifi
-const char* PASSWORD = "eueueueu"; // senha da rede wifi
-String BASE_URL = "http://192.168.43.235:8080/command";
-
 void initSerial();
-void initWiFi();
-String getCommand();
 void setDirection(int direction);
 void setVelocity(int velocity);
-
-WiFiClient client;
-HTTPClient http;
 
 JSONVar command; // Fields: ['velocity', 'direction']
 Servo servoDirection; 
 
 void setup() {
   initSerial();
-  initWiFi();
 }
 
 void loop() {
 
-  String response = getCommand();
+  String response = ''//getCommand();
 
 //  Serial.println("##[RESULT]## ==> " + response);
 
