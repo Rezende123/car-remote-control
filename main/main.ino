@@ -20,19 +20,23 @@ void loop() {
 
   String response = readStringSerial();
 
-  // Serial.println("##[RESULT]## ==> " + response);
+  //Serial.println("##[RESULT]## ==> " + response);
 
   if (response != "") {
      command = JSON.parse(response);
+     
+     if (JSON.typeof(command) != "undefined") {
 
-//     Serial.print("{ velocity: " + ((int) command["velocity"]) + ", direction" + ((int) command["direction"]) );
-     Serial.print("{ velocity: ");
-     Serial.print((int) command["velocity"]);
-     Serial.print(", direction: ");
-     Serial.print((int) command["direction"]);
-     Serial.println(" }");
-
-    //  setDirection( command["direction"] );
-    //  setVelocity( command["velocity"] );
+  //     Serial.print("{ velocity: " + ((int) command["velocity"]) + ", direction" + ((int) command["direction"]) );
+       Serial.print("{ velocity: ");
+       Serial.print((int) command["velocity"]);
+       Serial.print(", direction: ");
+       Serial.print((int) command["direction"]);
+       Serial.println(" }");
+  
+      //  setDirection( command["direction"] );
+      //  setVelocity( command["velocity"] );
+      
+     }
   }
 }
