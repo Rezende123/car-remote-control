@@ -1,6 +1,7 @@
 #include <Arduino_JSON.h>
 #include <Servo.h>
 
+#define SERVO_PORT 11
 #define MOTOR_FORWARD_PORT 10
 #define MOTOR_BACKWARD_PORT 9
 
@@ -9,7 +10,7 @@ void setDirection(int direction);
 void setVelocity(int velocity);
 
 JSONVar command; // Fields: ['velocity', 'direction']
-Servo servoDirection; 
+Servo servoDirection;
 
 void setup() {
   initSerial();
@@ -17,9 +18,9 @@ void setup() {
 
 void loop() {
 
-  String response = ''//getCommand();
+  String response = readStringSerial();
 
-//  Serial.println("##[RESULT]## ==> " + response);
+  // Serial.println("##[RESULT]## ==> " + response);
 
   if (response != "") {
      command = JSON.parse(response);
@@ -31,7 +32,7 @@ void loop() {
      Serial.print((int) command["direction"]);
      Serial.println(" }");
 
-     setDirection( command["direction"] );
-     setVelocity( command["velocity"] );
+    //  setDirection( command["direction"] );
+    //  setVelocity( command["velocity"] );
   }
 }
