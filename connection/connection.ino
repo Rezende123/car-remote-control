@@ -6,11 +6,14 @@
 
 const char* SSID = "eu"; // rede wifi
 const char* PASSWORD = "eueueueu"; // senha da rede wifi
-String BASE_URL = "http://192.168.43.235:5000/command";
+
+String HOST = "https://remote-control-car-server.herokuapp.com";
+String URL = "https://remote-control-car-server.herokuapp.com/command";
+const int httpPort = 443;
 
 void initWiFi();
 
-WiFiClient client;
+WiFiClientSecure client;
 HTTPClient http;
 JSONVar command;
 

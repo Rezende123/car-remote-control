@@ -1,6 +1,12 @@
 String getCommand()
 {
-  http.begin(BASE_URL);
+  client.setInsecure();
+  if (!client.connect(HOST, httpPort)) { //works!
+    Serial.println("connection failed");
+    return "";
+  }
+  
+  http.begin(client, URL);
   http.addHeader("Content-type", "application/x-www-form-urlencoded");
   
   String response = "";
